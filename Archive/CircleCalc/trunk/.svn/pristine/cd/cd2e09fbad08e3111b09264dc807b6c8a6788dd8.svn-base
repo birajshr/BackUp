@@ -1,0 +1,32 @@
+<project name="CircleCalcAnt" default="dist" basedir=".">
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="dist.jar.dir" value="${dist.dir}/lib"/>
+	<property name="dist.jarfile" value="${dist.jar.dir}/CircleCalc.jar"/>
+	<property name="jar.dir" value="lib"/>
+	
+	<property name="jar.mathlib" location="${jar.dir}/MISSING_JAR_NAME_HERE"/>
+
+	<target name="init">
+		<!-- write init task(s) here -->
+	</target>
+
+	<target name="compile" depends="init">
+		<!-- write compile task(s) here -->
+	</target>
+
+	<target name="dist" depends="compile">
+		<!-- add missing task(s) (if any) here -->
+
+		<jar jarfile="${dist.jarfile}" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="Circle"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<!-- add "run" target here" -->
+
+	<!-- add clean target here" -->
+</project>

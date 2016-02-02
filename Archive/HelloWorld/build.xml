@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HelloWorld.makejar" default="run" basedir=".">
+	
+	 <property name="src.dir" value="src"/>
+	    <property name="build.dir" value="build"/>
+	    <property name="dist.dir" value="dist"/>
+	    <property name="dist.jar.dir" value="${dist.dir}/lib"/>
+	    <property name="dist.jarfile" value="${dist.jar.dir}/HelloWorld.jar"/>
+	    <property name="jar.dir" value="lib"/>
+		<property name="package" value="usa.texas.austin"/>
+
+	    <target name="init" >
+	        <mkdir dir="${build.dir}"/>
+	    </target>
+	    
+	    <target name="compile" depends="init">
+	        <javac srcdir="${src.dir}" destdir="${build.dir}"  includeantruntime="false"/>
+	    </target>
+	    
+	    <target name="dist" depends="compile">
+	        <mkdir dir="${dist.dir}"/>
+	        <mkdir dir="${dist.jar.dir}"/>
+	        
+	        <jar jarfile="${dist.jarfile}" includes="**" basedir="${build.dir}">
+	            <manifest>
+	                <attribute name="Main-Class"  value="HelloWorld"/>
+	            </manifest>
+	        </jar>
+	    </target>
+	    
+	    <target name="run" depends="dist">
+	        <java jar="${dist.jarfile}" fork="true"/>
+	    </target>
+
+	    <target name="clean">
+	        <delete dir="${build.dir}"/>
+	        <delete dir="${dist.dir}"/>
+	    </target>
+	
+	
+	
+</project>
